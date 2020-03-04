@@ -1,0 +1,75 @@
+100
+The Great Gatsby
+Books
+8.32
+1
+101
+The Scarlet Letter
+Books
+9.99
+1
+102
+The Adventures of Huckleberry Finn
+Books
+9.50
+1
+103
+Of Mice and Men
+Books
+9.25
+1
+104
+To Kill a Mockingbird
+Books
+10.25
+1
+200
+Instant Pot
+Home & Gifts
+41.97
+1
+201
+Credit Card Protector
+Home & Gifts
+175.95
+1
+202
+Gravity Blanket
+Home & Gifts
+19.99
+1
+203
+LV Suitcase
+Home & Gifts
+19.00
+1
+204
+LV Cufflinks
+Home & Gifts
+19.50
+1
+300
+Apple AirPods
+Tech
+14.60
+1
+301
+iPhone Charger
+Tech
+21.25
+1
+302
+iPhone 6
+Tech
+55.97
+1
+303
+iPhone 4
+Tech
+9.98
+1
+304
+Kindle
+Tech
+14.65
+1
