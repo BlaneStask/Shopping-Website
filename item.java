@@ -1,20 +1,3 @@
-/*
-Author: Blane Staskiewicz
-E-mail: bas6248@psu.edu
-Course: CMPSC 221
-Assignment: Programming Assignment 3
-Due date: 3/03/2020
-File: shopping_cart.java, item.java, shoppingC_list.txt
-Purpose: Java application that is a shopping cart, uses Arraylists to
-  enter new items into the cart and checkout with card.
-Compiler/IDE: Java SE Development Kit 13.0.2/Eclipse Foundation
-  IDE 2019-12
-Operating system: macOS Catalina Version 10.15.2
-Reference(s): Java 10 API - Oracle Documentation
-  (https://docs.oracle.com/javase/10/docs/api/)
-  Chapters 9, 10, 14 Lecture Slides
-*/ 
-
 package shopc;
 
 public class item{
