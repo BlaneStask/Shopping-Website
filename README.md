@@ -1,6 +1,13 @@
 # Shopping Website 
 This is a project from CMPSC221, that is an online shopping website for books, technology and other goods.
 
+## Packages and Imports
+
+```Java
+package shopc;
+import java.util.*;
+import java.io.*;
+```
 
 ## Sample Run:
 
