@@ -8,19 +8,19 @@ public class shopping_cart{
 	 * @throws Exception 
 	 * @call		calls other methods for values
 	 */
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception{
 		//scan file
         ArrayList <item> storage = new ArrayList<item>();
         Scanner s = null;
-        try {
+        try{
         	s = new Scanner(new FileInputStream("shoppingC_list.txt"));
         } 
-        catch (FileNotFoundException e) {
+        catch(FileNotFoundException e){
         	System.out.println("Problem opening files.");
             System.exit(0);
         }
         //loop for values
-        while (s.hasNextLine()) {
+        while(s.hasNextLine()){
 	        int number = Integer.parseInt(s.nextLine());
 	        String name = s.nextLine();
 	        String category = s.nextLine();
@@ -31,42 +31,37 @@ public class shopping_cart{
     	
         s = new Scanner(System.in);
         int count = 0;
-        
         int input = welcome(s);
-        
     	ArrayList<item> cart = new ArrayList<item>();
         
         //loops until checkout value is returned
-        while(input != 4) {
+        while(input != 4){
             input = welcome(s);
-            
             //return to menu
-            if(input == 0) {
+            if(input == 0){
             	input = welcome(s);
             }
-            
-            if(input == 2 && count == 0 || input == 3 && count == 0 || input == 4 && count == 0) {
+            if(input == 2 && count == 0 || input == 3 && count == 0 || input == 4 && count == 0){
             	System.out.println();
             	System.out.println("A shopping cart has not been created.");
             	System.out.println();
             }
-    		
             //first time making a shopping cart
-            else if(input == 1 && count == 0) {
+            else if(input == 1 && count == 0){
         		System.out.println();
             	System.out.println("Shopping Cart Created!");
         		System.out.println();
             	count++;
             }
             //trying to make a cart again
-            else if(input == 1 && count > 0) {
+            else if(input == 1 && count > 0){
         		System.out.println();
             	System.out.println("You already have a Shopping Cart Created!");
         		System.out.println();
         		return;
             }
             //adding to cart
-            else if(input == 2) {
+            else if(input == 2){
         		System.out.println("Choose a Category.");
         		System.out.println("1) Books");
         		System.out.println("2) Home & Gifts");
@@ -80,9 +75,9 @@ public class shopping_cart{
         		System.out.println();
         		
         		//invalid choice
-        		if(user_input != 1 && user_input != 2 && user_input != 3) {
+        		if(user_input != 1 && user_input != 2 && user_input != 3){
         			//loop until valid choice
-        			while(user_input != 1 && user_input != 2 && user_input != 3) {
+        			while(user_input != 1 && user_input != 2 && user_input != 3){
         				System.out.print(user_input);
         				System.out.println(" is not a valid choice! Please enter a number from 1 to 3.");
         				
@@ -92,83 +87,78 @@ public class shopping_cart{
         			}
         			System.out.print("Your choice?: ");
         			System.out.println(user_input);
-            		System.out.println();
+            			System.out.println();
         		}
-        		
         		//prints attributes of items, based on input value
-        		if(user_input == 1) {
-    	    		for(int i = 0; i < storage.size(); i++) {
-    	    			if((storage.get(i)).getcategory().equals("Books")) {
-    	    				(storage.get(i)).stringtoFlat();
-    	    			}
-    	    		}
+        		if(user_input == 1){
+				for(int i = 0; i < storage.size(); i++){
+					if((storage.get(i)).getcategory().equals("Books")){
+						(storage.get(i)).stringtoFlat();
+					}
+				}
         		}
-        		else if(user_input == 2) {
-    	    		for(int i = 0; i < storage.size(); i++) {
-    	    			if((storage.get(i)).getcategory().equals("Home & Gifts")) {
-    	    				(storage.get(i)).stringtoFlat();
-    	    			}
-    	    		}
+        		else if(user_input == 2){
+				for(int i = 0; i < storage.size(); i++){
+					if((storage.get(i)).getcategory().equals("Home & Gifts")){
+						(storage.get(i)).stringtoFlat();
+					}
+				}
         		}
-        		else if(user_input == 3) {
-    	    		for(int i = 0; i < storage.size(); i++) {
-    	    			if((storage.get(i)).getcategory().equals("Tech")) {
-    	    				(storage.get(i)).stringtoFlat();
-    	    			}
-    	    		}
+        		else if(user_input == 3){
+				for(int i = 0; i < storage.size(); i++){
+					if((storage.get(i)).getcategory().equals("Tech")){
+						(storage.get(i)).stringtoFlat();
+					}
+				}
         		}
         		
         		System.out.println();
         		System.out.println("Enter the number of the item you wish to add.");
-        		
         		String input4 = s.nextLine();
         		int user_input1 = Integer.parseInt(input4);
         		
         		try{
-            		//breaks if a valid number of the items
-            		for(int i = 0; i < storage.size(); i++) {
-            			if(user_input1 == ((storage.get(i)).getnumber())) {
-            				add(storage, cart, i);
-            				
-                    		System.out.print("Your choice?: ");
-                    		System.out.println(user_input1);
-                    		System.out.println();
-                    		System.out.print("Your choice ");
-                    		System.out.print('"');
-                    		System.out.print((storage.get(user_input1)).getnumber());
-                    		System.out.print("   ");
-                    		System.out.print((storage.get(user_input1)).getname());
-                    		System.out.print('"');
-                    		System.out.println(" has been added to the shopping cart.");
-                    		System.out.println();
-                    		
-            				break;
-            			}
-            			//if ran throughout list and no value is equal to input value, return
-            			else if(i == 14 && user_input1 != (storage.get(i)).getnumber()) {
-            	  			System.out.print("Item #");
-            				System.out.print(user_input1);
-            				System.out.println(" was not found in storage.");
-            				throw new Exception();
-            			}
-            		}
+				//breaks if a valid number of the items
+				for(int i = 0; i < storage.size(); i++){
+					if(user_input1 == ((storage.get(i)).getnumber())){
+						add(storage, cart, i);
+						System.out.print("Your choice?: ");
+						System.out.println(user_input1);
+						System.out.println();
+						System.out.print("Your choice ");
+						System.out.print('"');
+						System.out.print((storage.get(user_input1)).getnumber());
+						System.out.print("   ");
+						System.out.print((storage.get(user_input1)).getname());
+						System.out.print('"');
+						System.out.println(" has been added to the shopping cart.");
+						System.out.println();
+						break;
+					}
+					//if ran throughout list and no value is equal to input value, return
+					else if(i == 14 && user_input1 != (storage.get(i)).getnumber()){
+						System.out.print("Item #");
+						System.out.print(user_input1);
+						System.out.println(" was not found in storage.");
+						throw new Exception();
+					}
+				}
         		}
-        		catch(Exception e) {
+        		catch(Exception e){
     				return;
         		}
-        		
         		//print cart
-        		for(int i = 0; i < cart.size(); i++) {
+        		for(int i = 0; i < cart.size(); i++){
         			cart.get(i).toString();
         			System.out.println();
         		}
             }
             //remove from cart
-            else if(input == 3) {
+            else if(input == 3){
             	System.out.print("Displaying the current contents of the shopping cart ... ");
             	System.out.println();
             	
-        		for(int i = 0; i < cart.size(); i++) {
+        		for(int i = 0; i < cart.size(); i++){
         			cart.toString();
         			System.out.println();
         		}
@@ -181,26 +171,25 @@ public class shopping_cart{
         		System.out.println(user_input);
         		
         		try{
-            		//breaks if a valid number of the items
-            		for(int i = 0; i < storage.size(); i++) {
-            			if(user_input == (storage.get(i)).getnumber()) {
-            				break;
-            			}
-            			//if ran throughout list and no value is equal to input value, return
-            			else if(i == 14 && user_input != (storage.get(i)).getnumber()) {
-            	  			System.out.print("Item #");
-            				System.out.print(user_input);
-            				System.out.println(" was not found in your cart.");
-            				throw new Exception();
-            			}
-            		}
+				//breaks if a valid number of the items
+				for(int i = 0; i < storage.size(); i++){
+					if(user_input == (storage.get(i)).getnumber()){
+						break;
+					}
+					//if ran throughout list and no value is equal to input value, return
+					else if(i == 14 && user_input != (storage.get(i)).getnumber()){
+						System.out.print("Item #");
+						System.out.print(user_input);
+						System.out.println(" was not found in your cart.");
+						throw new Exception();
+					}
+				}
         		}
         		catch(Exception e) {
     				return;
         		}
         		
             	remove(user_input, cart);
-            	
             	System.out.println();
             	System.out.print("Item #");
             	System.out.print(user_input);
@@ -209,7 +198,7 @@ public class shopping_cart{
             	System.out.print("Displaying the current contents of the shopping cart ... ");
             	System.out.println();
             	
-        		for(int i = 0; i < cart.size(); i++) {
+        		for(int i = 0; i < cart.size(); i++){
         			cart.toString();
         			System.out.println();
         		}
@@ -220,7 +209,7 @@ public class shopping_cart{
         System.out.println("ORDER SUMMARY: ");
         System.out.println();
         	
-    	for(int i = 0; i < cart.size(); i++) {
+    	for(int i = 0; i < cart.size(); i++){
     		(cart.get(i)).toString();
     		System.out.println();
     	}
@@ -230,7 +219,7 @@ public class shopping_cart{
     	double total = 0;
     		
     	//total price of the cart
-    	for(int i = 0; i < cart.size(); i++) {
+    	for(int i = 0; i < cart.size(); i++){
     		total += (cart.get(i)).getprice();
     	}
     	System.out.print(total);
@@ -247,9 +236,9 @@ public class shopping_cart{
     	int user_input = Integer.parseInt(input3);
     		
     	//if invalid
-    	if(user_input != 1 && user_input != 2) {
+    	if(user_input != 1 && user_input != 2){
     		//loop until valid option
-    		while(user_input != 1 && user_input != 2) {
+    		while(user_input != 1 && user_input != 2){
 	    		System.out.println();
 	    		System.out.print(user_input);
 	    		System.out.println(" is not a valid option.");
@@ -263,7 +252,7 @@ public class shopping_cart{
     		}
     	}
     	//new credit card
-    	if(user_input == 2) {
+    	if(user_input == 2){
     		System.out.println();
     		System.out.println("Please enter your payment information: ");
     		System.out.println();
@@ -276,16 +265,16 @@ public class shopping_cart{
         	String input6 = s.nextLine();
         		
         	try{	
-            	if(input6.length() != 16) {
-            		throw new Exception();
-            	}
+			if(input6.length() != 16){
+				throw new Exception();
+			}
         	}
         	catch(Exception e) {
 	        	System.out.println("Credit Card Number does not have 16 digits. Please try again. ");
 	        	System.out.println("Credit Card Number (e.g., 5201345098756420): ");
 	            input6 = s.nextLine();
 	            		
-	            if(input6.length() != 16) {
+	            if(input6.length() != 16){
 	            	throw new Exception();
 	            }
         	}
@@ -310,7 +299,7 @@ public class shopping_cart{
         	System.out.println(input7);
     	}
     	//charges card on file
-    	else {
+    	else{
 	    	System.out.println("Payment Summary: ");
 	    	System.out.println();
 	    	System.out.print("Payment amount: $");
@@ -332,7 +321,7 @@ public class shopping_cart{
 	 * 
 	 * @return val 	returns input value from welcome
 	 */
-	public static int welcome(Scanner s) {
+	public static int welcome(Scanner s){
 		System.out.println();
 		System.out.println("/************************************************************************************************/");
 		System.out.println();
@@ -347,9 +336,9 @@ public class shopping_cart{
 		int val = Integer.parseInt(input);
 		
 		//if value is not an option
-		if(val != 1 && val != 2 && val != 3 && val != 4) {
+		if(val != 1 && val != 2 && val != 3 && val != 4){
 			//loop until value is an option
-			while(val != 1 && val != 2 && val != 3 && val != 4) {
+			while(val != 1 && val != 2 && val != 3 && val != 4){
 				System.out.print(val);
 				System.out.println(" is not a valid choice! Please enter a number from 1 to 4.");
 				System.out.println("Enter 0 to return to the main menu.");
@@ -358,7 +347,7 @@ public class shopping_cart{
 				val = Integer.parseInt(input1);
 				
 				//invalid, now 0 (main menu)
-				if(val == 0) {
+				if(val == 0){
 					System.out.println();
 					System.out.println("/************************************************************************************************/");
 					System.out.println();
@@ -409,9 +398,9 @@ public class shopping_cart{
 	 * 
 	 * @param	user_input, car, storage
 	 */
-	public static void remove(int user_input, ArrayList<item> cart) {
-		for(int i = 0; i < cart.size(); i++) {
-			if((cart.get(i)).getnumber() == user_input) {
+	public static void remove(int user_input, ArrayList<item> cart){
+		for(int i = 0; i < cart.size(); i++){
+			if((cart.get(i)).getnumber() == user_input){
 				cart.remove((cart.get(i)));
 			}
 		}
@@ -420,7 +409,7 @@ public class shopping_cart{
 	 * 
 	 * @param	user_input1, cart, storage
 	 */
-	public static void add(ArrayList<item> storage, ArrayList<item> cart, int i) {
+	public static void add(ArrayList<item> storage, ArrayList<item> cart, int i){
 		cart.add(storage.get(i));
 	}
 }
